@@ -1,6 +1,6 @@
-# Express Boilerplate Example
+# Beehive Asessment
 
-Express Boilerplate Example
+Beehive Asessment Study Case
 
 ## Installation
 
@@ -8,7 +8,7 @@ Install the dependencies and devDependencies using the following command:
 
 ```bash
 - Clone the repository
-- cd express-boilerplate-example
+- cd beehive-asessment
 - pnpm install
 ```
 
@@ -17,7 +17,7 @@ Install the dependencies and devDependencies using the following command:
 Start the server using the following command:
 
 ```bash
-- cd express-boilerplate-example
+- cd beehive-asessment
 - pnpm dev
 ```
 
@@ -30,8 +30,8 @@ Technology Stack used in this project:
 - Typescript
 - Dotenv
 - Nodemon
-- Prisma
-- PostgreSQL
+- Mongoose
+- MongoDB
 
 ## Architecture
 
