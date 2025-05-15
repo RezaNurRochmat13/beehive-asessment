@@ -5,8 +5,21 @@ export const createBook = async (data: Partial<IBook>): Promise<IBook> => {
   return await book.save();
 };
 
-export const getBooks = async (): Promise<IBook[]> => {
-  return await Book.find().populate('author');
+export const getBooksPaginated = async (
+  page: number,
+  limit: number
+): Promise<{ data: IBook[]; total: number }> => {
+  const skip = (page - 1) * limit;
+
+  const [data, total] = await Promise.all([
+    Book.find()
+      .populate('author')
+      .skip(skip)
+      .limit(limit),
+    Book.countDocuments(),
+  ]);
+
+  return { data, total };
 };
 
 export const getBookById = async (id: string): Promise<IBook | null> => {

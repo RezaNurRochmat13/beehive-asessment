@@ -10,9 +10,16 @@ export const createBook = async (req: Request, res: Response) => {
   }
 };
 
-export const getBooks = async (_: Request, res: Response) => {
-  const books = await bookService.getBooks();
-  res.json(books);
+export const getBooks = async (req: Request, res: Response) => {
+  const page = parseInt(req.query.page as string) || 1;
+  const limit = parseInt(req.query.limit as string) || 10;
+
+  try {
+    const result = await bookService.getBooks(page, limit);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch books' });
+  }
 };
 
 export const getBookById = async (req: Request, res: Response) => {

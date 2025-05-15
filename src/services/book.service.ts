@@ -5,8 +5,17 @@ export const createBook = async (data: Partial<IBook>): Promise<IBook> => {
   return await bookRepository.createBook(data);
 };
 
-export const getBooks = async (): Promise<IBook[]> => {
-  return await bookRepository.getBooks();
+export const getBooks = async (page = 1, limit = 10) => {
+  const { data, total } = await bookRepository.getBooksPaginated(page, limit);
+
+  return {
+    data,
+    meta: {
+      total,
+      page,
+      lastPage: Math.ceil(total / limit),
+    },
+  };
 };
 
 export const getBookById = async (id: string): Promise<IBook | null> => {
