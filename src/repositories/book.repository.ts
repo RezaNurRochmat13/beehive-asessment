@@ -6,11 +6,11 @@ export const createBook = async (data: Partial<IBook>): Promise<IBook> => {
 };
 
 export const getBooks = async (): Promise<IBook[]> => {
-  return await Book.find();
+  return await Book.find().populate('author');
 };
 
 export const getBookById = async (id: string): Promise<IBook | null> => {
-  return await Book.findById(id);
+  return await Book.findById(id).populate('author');
 };
 
 export const updateBook = async (id: string, data: Partial<IBook>): Promise<IBook | null> => {

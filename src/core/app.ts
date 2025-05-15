@@ -1,7 +1,8 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import articleRouter from "../routes/book.route";
+import bookRouter from "../routes/book.route";
+import authorRouter from "../routes/author.route";
 import connectDB from "../config/database.config";
 
 dotenv.config();
@@ -9,7 +10,8 @@ dotenv.config();
 const app: Express = express();
 app.use(express.json());
 app.use(cors());
-app.use('/api/v1', articleRouter);
+app.use('/api/books', bookRouter);
+app.use('/api/authors', authorRouter)
 
 connectDB();
 
