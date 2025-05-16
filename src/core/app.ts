@@ -5,6 +5,7 @@ import connectDB from "../config/database.config";
 import bookRouter from "../routes/book.route";
 import authRouter from '../routes/auth.route';
 import authorRouter from "../routes/author.route";
+import { authenticate } from "../middleware/auth.middleware";
 
 dotenv.config();
 

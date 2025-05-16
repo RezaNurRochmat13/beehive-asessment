@@ -3,10 +3,11 @@ import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'secret';
 
-export const authenticate = (req: Request, res: Response, next: NextFunction) => {
+export const authenticate = (req: Request, res: Response, next: NextFunction): void => {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    return res.status(401).json({ error: 'Unauthorized' });
+    res.status(401).json({ error: 'Unauthorized' });
+    return;  // hentikan eksekusi middleware, tapi jangan return res
   }
 
   const token = authHeader.split(' ')[1];
@@ -15,6 +16,7 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
     (req as any).user = decoded;
     next();
   } catch (err) {
-    return res.status(401).json({ error: 'Invalid token' });
+    res.status(401).json({ error: 'Invalid token' });
+    return;
   }
 };

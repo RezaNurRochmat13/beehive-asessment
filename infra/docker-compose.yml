@@ -13,5 +13,18 @@ services:
     volumes:
       - mongodb_data:/data/db
 
+  mongodb-test:
+    image: mongo:6.0
+    container_name: beehive-db-test
+    restart: unless-stopped
+    ports:
+      - "27018:27017"      # Port host 27018 mapping ke container 27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: beehive
+      MONGO_INITDB_ROOT_PASSWORD: beehive
+    volumes:
+      - mongodb_test_data:/data/db
+
 volumes:
   mongodb_data:
+  mongodb_test_data:
