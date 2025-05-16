@@ -41,11 +41,13 @@ Architecture used in this project:
 - config => Configuration of application, databases etc
 - controllers => Controller of application
 - core => Core of application
-- routes => Routes of application
-- service => Bussiness logic of application
-- utils => Utils of application
-- repository => Repository of application
 - middleware => Middleware of application
+- models => Models of application
+- routes => Routes of application
+- services => Bussiness logic of application
+- utils => Utils of application
+- repositories => Repository of application
+- tests => Unit test of application
 ```
 
 ## Author
