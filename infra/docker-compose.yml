@@ -1,16 +1,17 @@
-version: '3.8'
+version: "3.8"
+
 services:
-  postgres:
-    image: postgres:15
-    container_name: my-postgres
-    environment:
-      POSTGRES_USER: boilerplate
-      POSTGRES_PASSWORD: boilerplate
-      POSTGRES_DB: boilerplate-db
+  mongodb:
+    image: mongo:6.0
+    container_name: beehive-db
+    restart: unless-stopped
     ports:
-      - "5432:5432"
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: beehive
+      MONGO_INITDB_ROOT_PASSWORD: beehive
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mongodb_data:/data/db
 
 volumes:
-  postgres_data:
+  mongodb_data:
