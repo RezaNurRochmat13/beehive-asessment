@@ -14,8 +14,8 @@ app.use(cors());
 
 // Auth Routes
 app.use('/api/auth', authRouter);
-app.use('/api/', bookRouter);
-app.use('/api/', authorRouter)
+app.use('/api/books', bookRouter);
+app.use('/api/authors', authorRouter)
 
 connectDB();
 
