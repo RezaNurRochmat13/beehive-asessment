@@ -39,3 +39,15 @@ export const deleteBook = async (req: Request, res: Response) => {
   if (book) res.json({ message: 'Book deleted' });
   else res.status(404).json({ message: 'Book not found' });
 };
+
+export const borrowedBook = async (req: Request, res: Response) => {
+  const book = await bookService.getBookById(req.params.id);
+
+  if (book?.isBorrowed == true) res.status(400).json({ message: 'Book already borrowed' });
+
+  if (!book) res.status(404).json({ message: 'Book not found' });
+
+  await bookService.borrowedBook(req.params.id);
+
+  res.json({ message: 'Book borrowed' });
+}

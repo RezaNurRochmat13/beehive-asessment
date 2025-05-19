@@ -2,6 +2,7 @@ import { IBook } from '../models/book.model';
 import * as bookRepository from '../repositories/book.repository';
 
 export const createBook = async (data: Partial<IBook>): Promise<IBook> => {
+  data.isBorrowed = false;
   return await bookRepository.createBook(data);
 };
 
@@ -28,4 +29,8 @@ export const updateBook = async (id: string, data: Partial<IBook>): Promise<IBoo
 
 export const deleteBook = async (id: string): Promise<IBook | null> => {
   return await bookRepository.deleteBook(id);
+};
+
+export const borrowedBook = async (id: string): Promise<IBook | null> => {
+  return await bookRepository.borrowBook(id);
 };

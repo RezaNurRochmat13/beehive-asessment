@@ -33,3 +33,7 @@ export const updateBook = async (id: string, data: Partial<IBook>): Promise<IBoo
 export const deleteBook = async (id: string): Promise<IBook | null> => {
   return await Book.findByIdAndDelete(id);
 };
+
+export const borrowBook = async (id: string): Promise<IBook | null> => {
+  return await Book.findByIdAndUpdate(id, { isBorrowed: true }, { new: true });
+}
